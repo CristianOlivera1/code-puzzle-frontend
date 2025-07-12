@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary-green: #3FD545;
+  --color-secondary-blue: #2b7fff;
+  --color-selected: #0546ff;
+  --color-gray-dark: #E2E8F0;
+  --color-hover-secondary-blue: #1555b6;
+  --color-black-50: rgba(0, 0, 0, 0.5);
+  --color-black-40: rgba(0, 0, 0, 0.4);
+  --color-black-10: rgba(0, 0, 0, 0.1);
+  --color-hover-secondary-blue: #1555b6;
+  --color-gray-200: #edf2f7;
+  --color-subtitle: #1e2939;
+  --font-fifties: 'Fifties';
+  --font-system: 'system-ui';
+
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F3F4F6;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
+
+.primary-gradient {
+  background: linear-gradient(123deg,
+      #C8BDFF 0%,
+      #6721FF 50%,
+      #00CBFF 80%,
+      #C8BDFF 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+@font-face {
+  font-family: 'Fifties';
+  src: url('/assets/fonts/VVDS-Fifties-SCond-SBold-Italic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: bold;
+}

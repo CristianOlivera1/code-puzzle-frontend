@@ -1,0 +1,266 @@
+<header (click)="onClickOutside($event)">
+  <nav class="flex items-center justify-between p-4 md:px-8 z-10 fade-in bg-black-10 backdrop-blur-xs" aria-label="Global">
+    <div class="flex md:flex-1">
+      <a routerLink="/" class="relative -m-1.5 p-1.5 flex gap-2">
+        <img class="size-11" src="/assets/img/logo.png" alt="logo">
+        <h1 class="font-fifties text-4xl hidden md:flex my-1 text-primary-green">
+          CODE PUZZLE
+        </h1>
+      </a>
+    </div>
+    <div class="hidden md:flex md:gap-x-12 md:items-center ">
+      <a href="/" class="flex items-center gap-2 p-1 text-sm font-semibold text-white hover:rounded-md">
+        <svg class="size-6 hidden xl:block" viewBox="0 0 24 24" aria-hidden="true">
+          <use xlink:href="/assets/sprite.svg#home" />
+        </svg>Inicio</a>
+
+      <div class="relative group">
+        <a type="button" class="flex items-center gap-2 p-1 text-sm font-semibold text-white hover:rounded-md">
+          <svg class="size-6 hidden xl:block" viewBox="0 0 24 24">
+            <use xlink:href="/assets/sprite.svg#languages" />
+          </svg>
+          Lenguajes
+          <svg class="size-5 -ml-2" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <use xlink:href="/assets/sprite.svg#arrowbottom" />
+          </svg>
+        </a>
+
+        <div
+          class="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md rounded-3xl bg-white ring-1 ring-gray-900/5 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-y-scroll max-h-150">
+          <div class="p-4">
+
+            <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50">
+              <div
+                class="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                <img src="assets/logos/java.svg" alt="Java" />
+              </div>
+              <div class="flex-auto">
+                <a class="block font-semibold text-gray-600 cursor-pointer" href="/lenguaje/1">
+                  Java
+                  <span class="absolute inset-0"></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50">
+              <div
+                class="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                <img src="assets/logos/kotlin.svg" alt="Kotlin" />
+              </div>
+              <div class="flex-auto">
+                <a class="block font-semibold text-gray-600 cursor-pointer" href="/lenguaje/2">
+                  Kotlin
+                  <span class="absolute inset-0"></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50">
+              <div
+                class="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                <img src="assets/logos/cpp.svg" alt="C++" />
+              </div>
+              <div class="flex-auto">
+                <a class="block font-semibold text-gray-600 cursor-pointer" href="/lenguaje/3">
+                  C++
+                  <span class="absolute inset-0"></span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-1 justify-end mr-3 sm:mr-0">
+      <ng-container *ngIf="isLoggedIn; else guestButtons">
+        <div class="flex items-center gap-4 relative">
+          <div class="inline-block group cursor-pointer" (click)="togglePopover()">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBgCPQmyPHrOWxnUvbmQIRwOipjW8woZUreA&s"
+              alt="Foto de perfil" class="size-11 rounded-full hover-img-avatar object-cover" />
+            <div
+              class="absolute bottom-0 -right-1.5 w-5 h-5 flex items-center justify-center bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-gray-300"
+              [ngClass]="{
+                'opacity-100': showPopover,
+                'opacity-0': !showPopover
+              }">
+              <svg class="size-5 text-gray-600" viewBox="0 0 20 20" aria-hidden="true">
+                <use xlink:href="/assets/sprite.svg#arrowbottom" />
+              </svg>
+            </div>
+          </div>
+          <!-- Menú desplegable -->
+          <div *ngIf="showPopover" #popoverMenu
+            class="absolute top-full right-0 mt-2 w-72 bg-white rounded-xl shadow-lg z-50 pt-2 pb-3">
+            <div class="px-4 py-3 flex gap-3">
+              <div class="relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBgCPQmyPHrOWxnUvbmQIRwOipjW8woZUreA&s"
+                  alt="Foto de perfil" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <div class="text-gray-900 font-medium mb-1">
+                  Cristian Olivera Chavez
+                </div>
+                <div class="text-sm text-gray-500 line-clamp-1 w-52 xl:w-50">
+                  oliverachavez&#64;gmail.com
+                </div>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <a class="flex items-center gap-3 px-6 py-2 hover:bg-gray-100 text-gray-600 text-sm">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="/assets/sprite.svg#user" />
+                  </svg>
+                  Perfil
+                </a>
+              </li>
+
+              <li>
+                <a class="flex items-center gap-3 px-6 py-2 hover:bg-gray-100 text-red-600 text-sm border-t border-gray-200"
+                  (click)="logOut()">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="/assets/sprite.svg#goout" />
+                  </svg>
+                  Cerrar sesión
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #guestButtons>
+        <div>
+          <button class="px-1 text-sm sm:text-lg sm:px-2 sm:py-1 rounded mr-0 md:mr-2 hover:text-gray-400 text-white"
+            routerLink="/login">
+            Iniciar sesión
+          </button>
+          <button class="text-sm sm:text-lg primary-gradient text-white px-1 py-2 sm:px-2 sm:py-2 md:px-6 md:py-2 rounded-full hover:bg-gray-300 font-semibold"
+            routerLink="/register">
+            Registrarse
+          </button>
+        </div>
+      </ng-template>
+    </div>
+    <!-- Botón Hamburguesa -->
+    <div class="flex md:hidden justify-end">
+      <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+        (click)="toggleMenu()">
+        <span class="sr-only">Abrir menú</span>
+        <svg *ngIf="!menuAbierto" class="size-8" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+
+        <svg *ngIf="menuAbierto" class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Moviles -->
+<div *ngIf="menuAbierto" class="md:hidden fixed inset-0 z-50 bg-black/50" (click)="toggleMenu()"></div>
+
+<div *ngIf="menuAbierto"
+  class="md:hidden fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white px-6 py-6 overflow-y-auto" #menuMovil>
+  <div class="flex items-center justify-between">
+    <a href="#" class="-m-1.5 p-1.5 flex">
+
+      <h1 class="font-fifties text-[1.70rem] font-black italic my-1 text-primary-green">
+        CODE PUZZLE
+      </h1>
+    </a>
+    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" (click)="toggleMenu()">
+      <span class="sr-only">Cerrar menú</span>
+      <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="mt-6 flow-root">
+    <div class="-my-6 divide-y divide-gray-500/10">
+      <div class="space-y-2 py-6">
+        <ng-container *ngIf="!isLoggedIn">
+          <div class="flex flex-col items-center justify-center space-y-2">
+            <button class="px-4 py-2 rounded hover:text-blue-600 w-full" routerLink="/login">
+              Iniciar sesión
+            </button>
+            <button class="text-white primary-gradient px-4 py-2 rounded w-full hover:bg-gray-300 font-semibold"
+              routerLink="/register">
+              Registrarse
+            </button>
+          </div>
+        </ng-container>
+        <a href="/" class="flex gap-2 -mx-3 rounded-lg px-3 py-2 font-semibold text-gray-900 hover:bg-gray-50">
+          <svg class="size-5" viewBox="0 0 24 24" aria-hidden="true">
+            <use xlink:href="/assets/sprite.svg#home" />
+          </svg> Inicio</a>
+
+        <div class="-mx-3">
+          <a type="button"
+            class="flex items-center w-full rounded-lg font-semibold text-gray-900 hover:bg-gray-50 px-3 py-2 justify-between"
+            aria-controls="disclosure-1" aria-expanded="false">
+            <span class="flex items-center gap-2">
+              <svg class="size-5" viewBox="0 0 256 256">
+                <use xlink:href="/assets/sprite.svg#languages" />
+              </svg>
+              Lenguajes
+            </span>
+
+            <svg class="size-5 flex-none" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+              <use xlink:href="/assets/sprite.svg#arrowbottom" />
+            </svg>
+          </a>
+          <!-- Contenedor de Lenjuajes con scroll vertical -->
+          <div class="mt-2 space-y-2 max-h-[300px] overflow-y-auto" id="disclosure-1">
+            <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50">
+              <div class="flex-auto">
+                <a class="block font-semibold text-gray-600 cursor-pointer clamped" href="/lenguajes/1">
+                  Java
+                  <span class="absolute inset-0"></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50">
+              <div class="flex-auto">
+                <a class="block font-semibold text-gray-600 cursor-pointer clamped" href="/lenguajes/2">
+                  Kotlin
+                  <span class="absolute inset-0"></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50">
+              <div class="flex-auto">
+                <a class="block font-semibold text-gray-600 cursor-pointer clamped" href="/lenguajes/3">
+                  C++
+                  <span class="absolute inset-0"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="py-6">
+        <!--<ng-container *ngIf="isLoggedIn">
+          <div class="flex items-center gap-4">
+            <img *ngIf="userProfile?.fotoPerfil" [src]="userProfile.fotoPerfil" alt="Foto de perfil"
+              class="w-10 h-10 rounded-full object-cover" />
+            <span class="font-medium">{{ userProfile?.nombre }} {{
+              userProfile?.apellidos }}</span>
+          </div>
+        </ng-container>
+      -->
+      </div>
+
+    </div>
+  </div>
+</div>
