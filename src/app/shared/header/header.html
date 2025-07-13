@@ -1,8 +1,9 @@
 <header (click)="onClickOutside($event)">
-  <nav class="flex items-center justify-between p-4 md:px-8 z-10 fade-in bg-black-10 backdrop-blur-xs" aria-label="Global">
+  <nav class="flex items-center justify-between p-4 md:px-8 z-10 fade-in bg-black-10 backdrop-blur-xs"
+    aria-label="Global">
     <div class="flex md:flex-1">
       <a routerLink="/" class="relative -m-1.5 p-1.5 flex gap-2">
-        <img class="size-11" src="/assets/img/logo.png" alt="logo">
+        <img class="size-11" src="/assets/img/logo.svg" alt="logo">
         <h1 class="font-fifties text-4xl hidden md:flex my-1 text-primary-green">
           CODE PUZZLE
         </h1>
@@ -136,7 +137,8 @@
             routerLink="/login">
             Iniciar sesión
           </button>
-          <button class="text-sm sm:text-lg primary-gradient text-white px-1 py-2 sm:px-2 sm:py-2 md:px-6 md:py-2 rounded-full hover:bg-gray-300 font-semibold"
+          <button
+            class="text-sm sm:text-lg moving-border sm:px-2 sm:py-2 md:px-6 md:py-2 rounded-full registro-anim text-white primary-gradient"
             routerLink="/register">
             Registrarse
           </button>
@@ -169,7 +171,7 @@
   class="md:hidden fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white px-6 py-6 overflow-y-auto" #menuMovil>
   <div class="flex items-center justify-between">
     <a href="#" class="-m-1.5 p-1.5 flex">
-
+      <img class="size-11" src="/assets/img/logo.svg" alt="logo">
       <h1 class="font-fifties text-[1.70rem] font-black italic my-1 text-primary-green">
         CODE PUZZLE
       </h1>
