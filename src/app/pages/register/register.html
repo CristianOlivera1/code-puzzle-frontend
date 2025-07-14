@@ -1,0 +1,29 @@
+<div class="min-h-screen relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 z-50">
+    <app-header></app-header>
+  </div>
+
+  <!-- Register container -->
+  <div class="register-container">
+    <div class="register-left">
+      <div class="logo-section">
+        <img src="assets/img/logo.svg" alt="Logo" class="logo-img">
+        <h1 class="logo-title font-fifties">CODE PUZZLE</h1>
+      </div>
+      <h2 class="welcome-title">¡Únete a la aventura!</h2>
+      <p class="welcome-subtitle">Crea tu cuenta para comenzar a resolver puzzles</p>
+      <form class="register-form" (ngSubmit)="onRegister()">
+        <input id="username" type="text" placeholder="Nombre de usuario" class="register-input" [(ngModel)]="username" name="username">
+        <input id="email" type="email" placeholder="Correo electrónico" class="register-input" [(ngModel)]="email" name="email">
+        <input id="password" type="password" placeholder="Contraseña" class="register-input" [(ngModel)]="password" name="password">
+        <button type="submit" class="register-btn">REGÍSTRATE</button>
+      </form>
+      <div class="login-section">
+        <span>¿Ya tienes una cuenta? <a routerLink="/login" class="login-link">Iniciar sesión</a></span>
+      </div>
+    </div>
+    <div class="register-right">
+      <img src="assets/img/dev-login.svg" alt="Register Illustration" class="register-illustration">
+    </div>
+  </div>
+</div>

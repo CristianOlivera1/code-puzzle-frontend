@@ -1,0 +1,32 @@
+<div class="min-h-screen relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 z-50">
+    <app-header></app-header>
+  </div>
+
+  <!-- Login container -->
+  <div class="login-container">
+    <div class="login-left">
+      <div class="logo-section">
+        <img src="assets/img/logo.svg" alt="Logo" class="logo-img">
+        <h1 class="logo-title font-fifties">CODE PUZZLE</h1>
+      </div>
+      <h2 class="welcome-title">Bienvenido nuevamente, jugador!</h2>
+      <p class="welcome-subtitle">Inicia sesión para liberar la aventura!</p>
+      <form class="login-form">
+        <input type="text" placeholder="Nombre de usuario" class="login-input">
+        <input type="email" placeholder="Email" class="login-input">
+        <input type="password" placeholder="Contraseña" class="login-input">
+        <div class="forgot-section">
+          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit" class="login-btn">Iniciar sesión</button>
+      </form>
+      <div class="register-section">
+        <span>No tienes una cuenta aún? <a routerLink="/register" class="register-link">Registrarse</a></span>
+      </div>
+    </div>
+    <div class="login-right">
+      <img src="assets/img/dev-login.svg" alt="Login Illustration" class="login-illustration">
+    </div>
+  </div>
+</div>
