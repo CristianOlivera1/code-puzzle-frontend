@@ -1,29 +1,68 @@
-<div class="min-h-screen relative overflow-hidden">
-  <div class="absolute top-0 left-0 right-0 z-50">
-    <app-header></app-header>
-  </div>
+<div class="min-h-screen relative overflow-hidden bg-black">
+  <!-- SVG decorativo en el fondo -->
+  <img src="assets/img/dots-login-register.svg" alt="Decoración SVG"
+    class="absolute top-0 left-0 w-xl z-0 pointer-events-none" />
+  <div class="grid h-full min-h-screen lg:grid-cols-2">
+    <!-- Lado izquierdo - Formulario -->
+    <div class="flex justify-center px-4 py-8">
+      <div class="relative flex w-full max-w-[450px] flex-col items-start justify-center">
 
-  <!-- Register container -->
-  <div class="register-container">
-    <div class="register-left">
-      <div class="logo-section">
-        <img src="assets/img/logo.svg" alt="Logo" class="logo-img">
-        <h1 class="logo-title font-fifties">CODE PUZZLE</h1>
-      </div>
-      <h2 class="welcome-title">¡Únete a la aventura!</h2>
-      <p class="welcome-subtitle">Crea tu cuenta para comenzar a resolver puzzles</p>
-      <form class="register-form" (ngSubmit)="onRegister()">
-        <input id="username" type="text" placeholder="Nombre de usuario" class="register-input" [(ngModel)]="username" name="username">
-        <input id="email" type="email" placeholder="Correo electrónico" class="register-input" [(ngModel)]="email" name="email">
-        <input id="password" type="password" placeholder="Contraseña" class="register-input" [(ngModel)]="password" name="password">
-        <button type="submit" class="register-btn">REGÍSTRATE</button>
-      </form>
-      <div class="login-section">
-        <span>¿Ya tienes una cuenta? <a routerLink="/login" class="login-link">Iniciar sesión</a></span>
+        <!-- Logo section -->
+        <div class="flex items-center gap-3 mb-8">
+          <img src="assets/img/logo.svg" alt="Logo" class="w-12 h-12">
+          <h1 class="text-4xl font-black text-primary-gradient">Code Puzzle</h1>
+        </div>
+
+        <h2 class="text-xl font-semibold text-white mb-2">Bienvenido nuevamente, jugador!</h2>
+        <p class="text-gray-400 mb-8">¡Registrese para liberar la aventura!</p>
+        <button
+          class="w-full mb-6 flex items-center justify-center gap-3 px-4 py-3 border border-slate-600 bg-white rounded-lg text-gray-700 hover:bg-white/90 transition-colors duration-200">
+           <svg class="size-6" viewBox="0 0 48 48">
+          <use href="assets/sprite.svg#google"></use>
+          </svg>
+          Continuar con Google
+        </button>
+
+         <!-- Separador -->
+        <div class="relative w-full mb-6">
+          <div class="absolute inset-0 flex items-center">
+            <span class="w-full border-t border-slate-600"></span>
+          </div>
+          <div class="relative flex justify-center text-xs uppercase">
+            <span class="bg-black px-3 text-gray-400">O</span>
+          </div>
+        </div>
+        <!-- Form -->
+        <form class="space-y-5 w-full">
+          <div>
+            <input type="text" placeholder="Nombre de usuario"
+              class="w-full px-4 py-3 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent">
+          </div>
+          <div>
+            <input type="text" placeholder="email"
+              class="w-full px-4 py-3 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent">
+          </div>
+          <div>
+            <input type="password" placeholder="contrasenha"
+              class="w-full px-4 py-3 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent">
+          </div>
+          <button type="submit"
+            class="w-full primary-gradient font-bold py-3 px-6 rounded-lg transition-all text-white duration-200 transform hover:scale-105 mt-6">
+            REGÍSTRATE
+          </button>
+        </form>
+
+        <div class="mt-6 text-center w-full">
+          <span class="text-gray-400">¿Ya tienes una cuenta?
+            <a [routerLink]="['/login']" class="text-bold font-semibold text-white hover:underline">Iniciar sesión</a>
+          </span>
+        </div>
       </div>
     </div>
-    <div class="register-right">
-      <img src="assets/img/dev-login.svg" alt="Register Illustration" class="register-illustration">
+
+    <div class="hidden lg:flex flex-1 bg-gradient-to-br items-center justify-center p-8">
+      <img src="assets/img/register.webp" alt="Register Illustration"
+        class="w-full h-full max-h-screen object-cover rounded-xl shadow-lg">
     </div>
   </div>
 </div>

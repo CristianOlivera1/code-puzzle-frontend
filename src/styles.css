@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #F3F4F6;
 }
 
@@ -40,8 +40,16 @@ button {
       #C8BDFF 100%);
   background-repeat: no-repeat;
   background-size: cover;
-
 }
+
+.text-primary-gradient {
+  background: linear-gradient(123deg, #C8BDFF 0%, #AA83FF 50%, #00CBFF 80%, #C8BDFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
