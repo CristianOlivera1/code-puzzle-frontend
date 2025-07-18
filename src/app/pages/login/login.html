@@ -52,27 +52,27 @@
               class="w-full px-4 py-3 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent"
               required>
           </div>
-          <div>
+          <div class="relative">
             <input type="password" placeholder="Contraseña" [type]="showPassword ? 'text' : 'password'"
               [(ngModel)]="loginData.contrasenha" name="contrasenha" id="contrasenha"
-              class="w-full px-4 py-3 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent"
+              class="w-full px-4 py-3 pr-12 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent"
               required>
-          </div>
 
-          <button *ngIf="loginData.contrasenha?.trim()" type="button"
-            class="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-            (click)="togglePasswordVisibility()">
-            <ng-container *ngIf="showPassword">
-              <svg width="24" height="24" viewBox="0 0 24 24">
-                <use xlink:href="/assets/sprite.svg#eyeslash" />
-              </svg>
-            </ng-container>
-            <ng-container *ngIf="!showPassword">
-              <svg width="24" height="24" viewBox="0 0 24 24">
-                <use xlink:href="/assets/sprite.svg#eye" />
-              </svg>
-            </ng-container>
-          </button>
+            <button *ngIf="loginData.contrasenha?.trim()" type="button"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+              (click)="togglePasswordVisibility()">
+              <ng-container *ngIf="showPassword">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <use xlink:href="/assets/sprite.svg#eyeslash" />
+                </svg>
+              </ng-container>
+              <ng-container *ngIf="!showPassword">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <use xlink:href="/assets/sprite.svg#eye" />
+                </svg>
+              </ng-container>
+            </button>
+          </div>
 
           <div class="flex justify-end">
             <a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">¿Olvidaste tu contraseña?</a>
@@ -80,13 +80,13 @@
 
           <button type="submit" [disabled]="isLoggingIn"
             class="w-full primary-gradient font-bold py-3 px-6 rounded-lg transition-all text-white duration-200 transform hover:scale-105 mt-6">
-      <ng-container *ngIf="!isLoggingIn">INICIAR SESIÓN</ng-container>
-        <ng-container *ngIf="isLoggingIn">
-          <svg class="animate-spin" width="24" height="24" viewBox="0 0 36 36" version="1.1" aria-hidden="true"
-            data-icon="spin">
-            <use xlink:href="/assets/sprite.svg#spinner" />
-          </svg>
-        </ng-container>
+            <ng-container *ngIf="!isLoggingIn">INICIAR SESIÓN</ng-container>
+            <ng-container *ngIf="isLoggingIn">
+              <svg class="animate-spin" width="24" height="24" viewBox="0 0 36 36" version="1.1" aria-hidden="true"
+                data-icon="spin">
+                <use xlink:href="/assets/sprite.svg#spinner" />
+              </svg>
+            </ng-container>
           </button>
         </form>
 

@@ -5,6 +5,7 @@
 @theme {
   --color-primary-yellow: #F3A20F;
   --color-secondary-blue: #2b7fff;
+  --color-primary-border: #333333;
   --color-selected: #0546ff;
   --color-gray-dark: #E2E8F0;
   --color-hover-secondary-blue: #1555b6;

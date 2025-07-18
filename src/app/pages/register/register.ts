@@ -16,12 +16,9 @@ import { CustomValidators } from '../../Validators/CustomValidators';
 export class RegisterComponent implements OnInit {
 registerData: any = {
     nombre: '',
-    apellidos: '',
     email: '',
     contrasenha: '',
     confirmarContrasenha: '',
-    idCarrera: '',
-    genero: ''
   };
 
   alert: { type: string; message: string } | null = null;
@@ -68,7 +65,7 @@ registerData: any = {
     return;
   }
 
-  if (!this.registerData.nombre || !this.registerData.apellidos) {
+  if (!this.registerData.nombre || !this.registerData.email || !this.registerData.contrasenha|| !this.registerData.confirmarContrasenha) {
     this.showAlert('warning', 'Todos los campos son obligatorios.');
     return;
   }

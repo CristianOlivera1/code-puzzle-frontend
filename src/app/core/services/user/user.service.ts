@@ -16,4 +16,7 @@ export class UserService {
     return this.httpClient.put<any>(url, formData);
   }
 
+  getUserByUserId(userId: string): Observable<any> {
+    return this.httpClient.get(`${this.apiUser}/get/${userId}`);
+  }
 }

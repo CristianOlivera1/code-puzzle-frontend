@@ -1,19 +1,67 @@
-import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { UserService } from './../../core/services/user/user.service';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, ElementRef, HostListener, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Router } from 'express';
+import { Router } from '@angular/router';
+import { TokenService } from '../../core/services/oauth/token.service';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink,CommonModule,RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
-export class Header {
-  isLoggedIn: boolean = false;
+export class Header implements OnInit  {
+ isLoggedIn: boolean = false;
+  userInfo: any = null;
+  career: any[] = [];
 
-    logOut(): void {
+  constructor(
+    private tokenService: TokenService, private userService: UserService,
+    private router: Router
+  ) { }
 
+  ngOnInit(): void {
+    if (typeof window !== 'undefined') {
+      this.isLoggedIn = !!this.tokenService.getToken();
+      if (this.isLoggedIn) {
+        this.loadUser();
+      }
+
+      window.addEventListener('storage', () => {
+        this.isLoggedIn = !!this.tokenService.getToken();
+        if (this.isLoggedIn) {
+          this.loadUser();
+        } else {
+          this.userInfo = null;
+        }
+      });
+    }
+  }
+  loadUser(): void {
+    const userId = this.tokenService.getUserId();
+    if (userId) {
+      this.userService.getUserByUserId(userId).subscribe(
+        (response) => {
+          if (response.type === 'success') {
+            this.userInfo = response.data;
+            console.log("el usuario se obtenio", this.userInfo.nombre)
+          } else {
+            console.error('Error al obtener el perfil:', response.listMessage);
+          }
+        },
+        (error) => {
+          console.error('Error en la solicitud del perfil:', error);
+        }
+      );
+    }
+  }
+
+  logOut(): void {
+    this.tokenService.logOut();
+    this.isLoggedIn = false;
+    this.userInfo = null;
+    this.router.navigate(['/']);
   }
 
   showPopover = false;
