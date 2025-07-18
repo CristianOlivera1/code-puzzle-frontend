@@ -3,7 +3,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-primary-green: #3FD545;
+  --color-primary-yellow: #F3A20F;
   --color-secondary-blue: #2b7fff;
   --color-selected: #0546ff;
   --color-gray-dark: #E2E8F0;
