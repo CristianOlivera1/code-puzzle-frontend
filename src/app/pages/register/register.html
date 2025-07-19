@@ -59,49 +59,50 @@
               required>
           </div>
           <div>
-            <input type="text" placeholder="email" [(ngModel)]="registerData.email" name="email" id="email"
+            <input type="text" placeholder="Email" [(ngModel)]="registerData.email" name="email" id="email"
               class="w-full px-4 py-3 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent"
               required>
           </div>
-          <div>
-            <input type="password" placeholder="contraseña" [type]="showPassword ? 'text' : 'password'"
+          <!-- Campo de contraseña -->
+          <div class="relative">
+            <input type="password" placeholder="Contraseña" [type]="showPassword ? 'text' : 'password'"
               [(ngModel)]="registerData.contrasenha" name="contrasenha" id="contrasenha"
-              class="w-full px-4 py-3 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent"
+              class="w-full px-4 py-3 pr-12 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent"
               required>
+
             <button *ngIf="registerData.contrasenha?.trim()" type="button"
-              class="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
               (click)="togglePasswordVisibility()">
               <ng-container *ngIf="showPassword">
-                <!-- Icono para ocultar contraseña -->
-                <svg width="24" height="24" viewBox="0 0 24 24">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <use xlink:href="/assets/sprite.svg#eyeslash" />
                 </svg>
               </ng-container>
               <ng-container *ngIf="!showPassword">
-                <!-- Icono para mostrar contraseña -->
-                <svg width="24" height="24" viewBox="0 0 24 24">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <use xlink:href="/assets/sprite.svg#eye" />
                 </svg>
               </ng-container>
             </button>
           </div>
-          <div>
-            <input type="password" placeholder="contraseña" [type]="showConfirmPassword ? 'text' : 'password'"
+
+          <!-- Campo de confirmar contraseña -->
+          <div class="relative">
+            <input type="password" placeholder="Confirmar contraseña" [type]="showConfirmPassword ? 'text' : 'password'"
               [(ngModel)]="registerData.confirmarContrasenha" name="confirmarContrasenha" id="confirmarContrasenha"
-              class="w-full px-4 py-3 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent"
+              class="w-full px-4 py-3 pr-12 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-green focus:border-transparent outline-none transition-colors bg-transparent"
               required>
+
             <button *ngIf="registerData.confirmarContrasenha?.trim()" type="button"
-              class="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
               (click)="toggleConfirmPasswordVisibility()">
               <ng-container *ngIf="showConfirmPassword">
-                <!-- Icono para ocultar contraseña -->
-                <svg width="24" height="24" viewBox="0 0 24 24">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <use xlink:href="/assets/sprite.svg#eyeslash" />
                 </svg>
               </ng-container>
               <ng-container *ngIf="!showConfirmPassword">
-                <!-- Icono para mostrar contraseña -->
-                <svg width="24" height="24" viewBox="0 0 24 24">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <use xlink:href="/assets/sprite.svg#eye" />
                 </svg>
               </ng-container>
@@ -112,11 +113,14 @@
             [disabled]="isRegistering">
             <ng-container *ngIf="!isRegistering">REGISTRARSE</ng-container>
             <ng-container *ngIf="isRegistering">
-              <svg class="animate-spin" width="24" height="24" viewBox="0 0 36 36" version="1.1" aria-hidden="true"
-                data-icon="spin">
-                <use xlink:href="/assets/sprite.svg#spinner" />
-              </svg>
+              <div class="flex justify-center items-center">
+                <svg class="animate-spin" width="24" height="24" viewBox="0 0 36 36" version="1.1" aria-hidden="true"
+                  data-icon="spin">
+                  <use xlink:href="/assets/sprite.svg#spinner" />
+                </svg>
+              </div>
             </ng-container>
+
           </button>
         </form>
 

@@ -82,10 +82,12 @@
             class="w-full primary-gradient font-bold py-3 px-6 rounded-lg transition-all text-white duration-200 transform hover:scale-105 mt-6">
             <ng-container *ngIf="!isLoggingIn">INICIAR SESIÓN</ng-container>
             <ng-container *ngIf="isLoggingIn">
-              <svg class="animate-spin" width="24" height="24" viewBox="0 0 36 36" version="1.1" aria-hidden="true"
-                data-icon="spin">
-                <use xlink:href="/assets/sprite.svg#spinner" />
-              </svg>
+              <div class="flex justify-center items-center">
+                <svg class="animate-spin" width="24" height="24" viewBox="0 0 36 36" version="1.1" aria-hidden="true"
+                  data-icon="spin">
+                  <use xlink:href="/assets/sprite.svg#spinner" />
+                </svg>
+              </div>
             </ng-container>
           </button>
         </form>
