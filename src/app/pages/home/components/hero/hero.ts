@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { animate, svg, stagger } from 'animejs';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-hero',
@@ -12,14 +14,24 @@ export class Hero implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      animate(svg.createDrawable('.line'), {
+        draw: ['0 0', '0 1', '1 1'],
+        ease: 'inOutQuad',
+        duration: 3800,
+        delay: stagger(150),
+        loop: true
+      });
+    }
+  }
 
   ngAfterViewInit() {
-
-    // Solo ejecutar en el navegador
     if (isPlatformBrowser(this.platformId)) {
       this.initMagicStars();
+            this.animateSVGLogo();
     }
+
   }
 
   ngOnDestroy() {
@@ -48,24 +60,20 @@ export class Hero implements OnInit, OnDestroy, AfterViewInit {
     };
 
     const cycleStar = () => {
-      // Fase 1: Apagar la estrella - solo opacidad
       star.style.opacity = '0';
 
       setTimeout(() => {
-        // Fase 2: Cambiar posición mientras está apagada
         const newPos = getRandomPosition();
         star.style.setProperty("--star-left", `${newPos.left}%`);
         star.style.setProperty("--star-top", `${newPos.top}%`);
 
         setTimeout(() => {
-          // Fase 3: Encender la estrella en nueva posición
           star.style.opacity = '1';
 
-        }, 300); // Tiempo para cambiar posición
-      }, 800); // Tiempo apagada
+        }, 300);
+      }, 800);
     };
 
-    // Iniciar cada estrella con delay diferente
     const initialDelay = (index + 1) * 1000;
     const cycleInterval = 4000 + (index * 500);
 
@@ -74,5 +82,70 @@ export class Hero implements OnInit, OnDestroy, AfterViewInit {
       const interval = setInterval(cycleStar, cycleInterval);
       this.intervals.push(interval);
     }, initialDelay);
+  }
+
+    private animateSVGLogo() {
+    const svgElement = document.querySelector('.logo-svg');
+
+    if (svgElement) {
+      const tl = gsap.timeline();
+
+      // Estado inicial: posición izquierda, fuera de pantalla
+      gsap.set(svgElement, {
+        x: -200,
+        y: 0,
+        rotation: -180,
+        scale: 0.5,
+        opacity: 0
+      });
+
+      // Animación de entrada
+      tl.to(svgElement, {
+        duration: 1.5,
+        x: 0,
+        y: 0,
+        rotation: 360,
+        scale: 1,
+        opacity: 1,
+        ease: "back.out(1.7)",
+        delay: 0.5
+      })
+      // Pequeña animación de rebote final
+      .to(svgElement, {
+        duration: 0.3,
+        scale: 1.1,
+        ease: "power2.out"
+      })
+      .to(svgElement, {
+        duration: 0.3,
+        scale: 1,
+        ease: "power2.out"
+      })
+      .to(svgElement, {
+        duration: 4,
+        rotation: "+=360",
+        ease: "none",
+        repeat: -1,
+        yoyo: false
+      });
+
+      // Animación adicional de hover
+      svgElement.addEventListener('mouseenter', () => {
+        gsap.to(svgElement, {
+          duration: 0.3,
+          scale: 1.15,
+          rotation: "+=180",
+          ease: "power2.out"
+        });
+      });
+
+      svgElement.addEventListener('mouseleave', () => {
+        gsap.to(svgElement, {
+          duration: 0.3,
+          scale: 1,
+          ease: "power2.out"
+        });
+      });
+    }
   }
 }
